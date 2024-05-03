@@ -1,0 +1,200 @@
+
+/* Navigation Bar */
+.navbar {
+  font-size: 25px;
+  background-color: #007bff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.navbar a:hover {
+  background-color: #005ead;
+}
+
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #007bff; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+/* adding in line image  */
+.calculator_img{
+    display: inline-flex;
+    align-items: left;
+    padding: 10px;
+}
+.calculator_img img{
+    width: 60px;
+    margin-right: 10px;
+}
+
+h1{
+    display: inline-block;
+}
+
+/* Body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #005ea2;
+
+}
+
+/* #####Collapsible for explanation ##### */
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  background-color: #007bff;
+}
+.active, .collapsible:hover{
+    background-color: #005ead;
+}
+
+/* Style the collapsible content (expl).*/
+.expl {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: white;
+    transition: max-height 0.2s ease-out;
+  
+}
+
+/* #####End Collapsible for explanation ##### */
+
+/* Header */
+header {
+    background-color: #fff;
+    color: white;
+    padding: 20px;
+    text-align: left;
+    height: 190px;
+}
+
+#pageheader, .logo-container{
+    display: flex;
+}
+
+.search-form{
+    flex: 1;
+    text-align: right;
+    margin-top: 100px;
+    
+}
+
+.search-form input{
+    font-weight: bold;
+    color: black;
+    font-size: 1.2em;
+}
+
+
+/* Calculator*/
+
+.calculator {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Container */
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ratings*/
+.ratings{
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    margin-bottom: 20px;
+    max-width: 400px;
+    
+}
+
+.ratings div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ratings label {
+    display: block;
+    font-size: 20px;
+}
+
+.ratings select {
+    display: block;
+    font-size: 20px;
+}
+
+.ratings button {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+#output {
+    font-size: 26px;
+}
+
+
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #005ea2;
+    color: #fff;
+}
+
+
+/* Footer */ 
+
+.custom-footer{
+    background-image: url("footer1.png");
+    background-size: cover;
+    background-color: #005ea2;
+    background-position: center;
+    padding: 0px;
+    max-width: 100%; 
+    height: 250px;
+
+}

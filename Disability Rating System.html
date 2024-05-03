@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Ratings Table</title>
+    <link rel="stylesheet" href="veterans_affairs_theme.css">
+</head>
+<body>
+
+<header id="pageheader">
+   <div class="logo-container">
+      <img src="logo.png" alt="Easy File VA" style="width: 300px; padding: 15px;" />
+   </div>
+
+<!-- Search Bar -->
+<div class="search-form">
+   <form class="form">
+      <input id="search-btn" type= "text" class="input" placeholder="Search..."/>
+   </form>
+</div>
+
+</header>
+
+    <!-- Naviguation to the other pages -->
+  <nav class="navbar">
+    <a href="landing_page.html">Home</a>
+    <a href="Eligibility for Benefits.html">Eligibility for Benefits</a>
+    <a href="#">Disability Rating System</a>
+    <a href="Resources.html">Resources</a>
+  </nav>
+
+<div class="calculator">
+
+    <div class="calculator_img"> 
+        <img src="calculator.png" alt="calculator picture">
+        <h1>Combined Ratings Table</br></h1>
+    </div>
+        <h2>Combined Ratings Calculator</h2>
+
+        <p> The VA uses Combined Ratings Table to determine a single disability rating for veterans with multiple disabilities. The calculator below facilitates this process by providing combined values for pairs of disabilities. </p>
+</div>
+
+<div class="ratings">
+        <div>
+            <label for="rating1">1st Disability Rating:</label>
+            <select id="rating1">
+                <option value="1">0%</option>
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+                <option value="80">80%</option>
+                <option value="90">90%</option>
+            </select>
+        </div>
+        <div>
+            <label for="rating2">2nd Disability Rating:</label>
+            <select id="rating2">
+                <option value="1">0%</option>
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+                <option value="80">80%</option>
+                <option value="90">90%</option>
+            </select>
+        </div>
+        <div>
+            <label for="rating3">3rd Disability Rating:</label>
+            <select id="rating3">
+                <option value="1">0%</option>
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+                <option value="80">80%</option>
+                <option value="90">90%</option>
+            </select>
+        </div>
+        <div>
+            <label for="rating4">4th Disability Rating:</label>
+            <select id="rating4">
+                <option value="1">0%</option>
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+                <option value="80">80%</option>
+                <option value="90">90%</option>
+            </select>
+        </div>
+        <button onclick="calculate()">Calculate</button>
+        <div id="output"></div>
+    </div>
+
+</div>
+
+
+    <button type="button" class="collapsible"> <h3>Click for more explanation</h3></button>
+    <div class="expl">
+    <p>  
+    The combined value is rounded to the nearest number divisible by 10, adjusting values ending in 5 upward. If there are more than two disabilities, the combined value for the first two is determined and then combined with the third disability, and so forth. </br> 
+    For example, for a veteran with a 60% disability, a 40% disability, and a 20% disability, the VA would first find the combined rating for the 60% and 40% disabilities (76%). Then, they would combine the 76% with the 20% disability to get the final combined rating (80%).</p>
+    </div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>10</th>
+                    <th>20</th>
+                    <th>30</th>
+                    <th>40</th>
+                    <th>50</th>
+                    <th>60</th>
+                    <th>70</th>
+                    <th>80</th>
+                    <th>90</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Table rows will be generated dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var combined_ratings = [
+            [19,27,35,43,51,60,68,76,84,92],
+            [20,28,36,44,52,60,68,76,84,92],
+            [21,29,37,45,53,61,68,76,84,92],
+            [22,30,38,45,53,61,69,77,84,92],
+            [23,31,38,46,54,62,69,77,85,92],
+            [24,32,39,47,54,62,70,77,85,92],
+            [25,33,40,48,55,63,70,78,85,93],
+            [26,33,41,48,56,63,70,78,85,93],
+            [27,34,42,49,56,64,71,78,85,93],
+            [28,35,42,50,57,64,71,78,86,93],
+            [29,36,43,50,57,65,72,79,86,93],
+            [30,37,44,51,58,65,72,79,86,93],
+            [31,38,45,52,59,66,72,79,86,93],
+            [32,39,46,52,59,66,73,80,86,93],
+            [33,40,46,53,60,67,73,80,87,93],
+            [34,41,47,54,60,67,74,80,87,93],
+            [35,42,48,55,61,68,74,81,87,94],
+            [36,42,49,55,62,68,74,81,87,94],
+            [37,43,50,56,62,69,75,81,87,94],
+            [38,44,50,57,63,69,75,81,88,94],
+            [39,45,51,57,63,70,76,82,88,94],
+            [40,46,52,58,64,70,76,82,88,94],
+            [41,47,53,59,65,71,76,82,88,94],
+            [42,48,54,59,65,71,77,83,88,94],
+            [43,49,54,60,66,72,77,83,89,94],
+            [44,50,55,61,66,72,78,83,89,94],
+            [45,51,56,62,67,73,78,84,89,95],
+            [46,51,57,62,68,73,78,84,89,95],
+            [47,52,58,63,68,74,79,84,89,95],
+            [48,53,58,64,69,74,79,84,90,95],
+            [49,54,59,64,69,75,80,85,90,95],
+            [50,55,60,65,70,75,80,85,90,95],
+            [51,56,61,66,71,76,80,85,90,95],
+            [52,57,62,66,71,76,81,86,90,95],
+            [53,58,62,67,72,77,81,86,91,95],
+            [54,59,63,68,72,77,82,86,91,95],
+            [55,60,64,69,73,78,82,87,91,96],
+            [56,60,65,69,74,78,82,87,91,96],
+            [57,61,66,70,74,79,83,87,91,96],
+            [58,62,66,71,75,79,83,87,92,96],
+            [59,63,67,71,75,80,84,88,92,96],
+            [60,64,68,72,76,80,84,88,92,96],
+            [61,65,69,73,77,81,84,88,92,96],
+            [62,66,70,73,77,81,85,89,92,96],
+            [63,67,70,74,78,82,85,89,93,96],
+            [64,68,71,75,78,82,86,89,93,96],
+            [65,69,72,76,79,83,86,90,93,97],
+            [66,69,73,76,80,83,86,90,93,97],
+            [67,70,74,77,80,84,87,90,93,97],
+            [68,71,74,78,81,84,87,90,94,97],
+            [69,72,75,78,81,85,88,91,94,97],
+            [70,73,76,79,82,85,88,91,94,97],
+            [71,74,77,80,83,86,88,91,94,97],
+            [72,75,78,80,83,86,89,92,94,97],
+            [73,76,78,81,84,87,89,92,95,97],
+            [74,77,79,82,84,87,90,92,95,97],
+            [75,78,80,83,85,88,90,93,95,98],
+            [76,78,81,83,86,88,90,93,95,98],
+            [77,79,82,84,86,89,91,93,95,98],
+            [78,80,82,85,87,89,91,93,96,98],
+            [79,81,83,85,87,90,92,94,96,98],
+            [80,82,84,86,88,90,92,94,96,98],
+            [81,83,85,87,89,91,92,94,96,98],
+            [82,84,86,87,89,91,93,95,96,98],
+            [83,85,86,88,90,92,93,95,97,98],
+            [84,86,87,89,90,92,94,95,97,98],
+            [85,87,88,90,91,93,94,96,97,99],
+            [86,87,89,90,92,93,94,96,97,99],
+            [87,88,90,91,92,94,95,96,97,99],
+            [88,89,90,92,93,94,95,96,98,99],
+            [89,90,91,92,93,95,96,97,98,99],
+            [90,91,92,93,94,95,96,97,98,99],
+            [91,92,93,94,95,96,96,97,98,99],
+            [92,93,94,94,95,96,97,98,98,99],
+            [93,94,94,95,96,97,97,98,99,99],
+            [94,95,95,96,96,97,98,98,99,99]
+        ];
+
+        var tableBody = document.getElementById("table-body");
+
+        // Loop to generate table rows
+        for (var i = 0; i < combined_ratings.length; i++) {
+            var row = document.createElement("tr");
+            for (var j = 0; j < combined_ratings[i].length; j++) {
+                var cell = document.createElement("td");
+                cell.textContent = combined_ratings[i][j];
+                row.appendChild(cell);
+            }
+            tableBody.appendChild(row);
+        }
+
+        function calculate() {
+            var rating1 = parseInt(document.getElementById("rating1").value);
+            var rating2 = parseInt(document.getElementById("rating2").value);
+            var rating3 = parseInt(document.getElementById("rating3").value);
+            var rating4 = parseInt(document.getElementById("rating4").value);
+
+            // Check if any rating is 0
+            if (rating1 === 0 || rating2 === 0 || rating3 === 0 || rating4 === 0) {
+                document.getElementById("output").textContent = "All disability ratings must be selected.";
+                return;
+            }
+
+            // Calculate combined rating
+            var efficiency1 = 1 - (rating1 / 100);
+            var efficiency2 = 1 - (rating2 / 100);
+            var efficiency3 = rating3 === 0 ? 1 : 1 - (rating3 / 100);
+            var efficiency4 = rating4 === 0 ? 1 : 1 - (rating4 / 100);
+
+            var remainingEfficiency = efficiency1 * efficiency2 * efficiency3 * efficiency4;
+            var combinedRating = 100 - (remainingEfficiency * 100);
+
+            // Round to nearest multiple of 10
+            combinedRating = Math.round(combinedRating / 10) * 10;
+
+            // Display the result
+            document.getElementById("output").textContent = "Combined Disability Rating: " + combinedRating + "%";
+        }
+    </script>
+
+   <footer class="custom-footer">
+   </footer>
+   <script src="main.js"></script>
+
+ 
+</body>
+</html>
